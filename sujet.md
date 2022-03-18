@@ -11,3 +11,42 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+By [Coroller Ilona](https://gitlab.istic.univ-rennes1.fr/icoroller) and [Bouvier Benjamin](https://gitlab.istic.univ-rennes1.fr/bebouvier)
+
+
+1. Bug patriot missile
+   
+   <div style="text-align: justify;">Due to a bug in the software a missile struck an American Army barracks, killing 28 soldiers and injuring around 100 other people.This bug was around the calculation of the time. To calculate the time in seconds, the system's internal clock multiplied by 1/10 to produce the time in seconds. But this value "1/10" was stocked in a register of 24 bits. So the value was chopped in binary. So an error of ~0.000000095. So it seems nothing but high value like the travel's speed of a missile is not negligible. It made the missile crash into the barracks. So if the software was tested with big values, they would have avoided this bug. This bug was local because it concerns a specific part of the code</div>
+   
+   [Link to the article](https://www-users.cse.umn.edu/~arnold/disasters/patriot.html)
+
+2. Apache Commons
+   <div style="text-align: justify;">
+        The class BlockingBuffer when throwing " BufferUnderflowException " hadn't the cause of the exception with the error message.It was local because it is specific to a part of the code. So this local bug made the debugging harder for developers.
+        So someone just added the stack trace
+   </div> 
+
+   [Link to the bug](https://issues.apache.org/jira/browse/COLLECTIONS-98)
+   
+3. Chaos engineering 
+   
+   <div style="text-align: justify;">Chaos engineering is a way to test the robustness of a service or a software. The idea is to crash a part to see if the application can withstand turbulent conditions. So any online project could be tested with this way to verify its capacity so stay online every time. Diferents companies are already using this method such as amazon, facebook, google… For example as a metric, Netflix uses SPS , for (stream) starts per second and new account signups per second. There is a strong, obvious link between these metrics and the availability of the system. These metrics depend a lot on the domain of the application. If you are an ecommerce website you could use as a metric the number of completed purchases per second, where an ad serving service might use numbers of ads viewed by users per second.</div></br>
+
+4. Formal semantic: WebAssembly
+   
+   <div style="text-align: justify;">Having a formal specification for WebAssembly, gives advantages like compact representation, efficient validation and compilation and safe low to no-overhead execution. It is also safe, fast and portable. However, in our opinion the WebAssembly implementations still need to be tested because even if there is a great validation of the code, it doesn’t verify it. Indeed, with this method we can more easily say that this is the right code but not so obviously that the code is right. </div></br>
+
+5. Mechanized specification: Isabelle
+   
+   <div style ="text-align: justify">
+   The main advantages of the mechanized specification Isabelle are the “the fully mechanized proof of soundness of the WebAssembly type system”. Before, the properties were “proven by induction, over either the reduction or the typing relation.” 
+   This mechanized specification helped the original formal specification of WebAssembly improve by finding an issue about the trap value and communicating it to the specification authors and it was then adopted into the specification.
+   The other artifacts that were derived from this work are a verified executable interpreter and type checker.
+   The author verified the specification with “all core language conformance available tests in the WebAssembly repository” and by testing the executable interpreter “against several major WebAssembly engines”.
+   Finally, this new specification doesn’t remove the need for testing because even if this is safe a “crash bug was discovered within the Binaryen toolchain itself”.
+   </div>
+
+
+
+
