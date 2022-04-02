@@ -11,3 +11,44 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+BARTHELAT - JUGIEAU
+
+1.  We will talk about the bug of the Year 2000 also known as the Y2K bug. This bug appeared at the passage of the year 1999 to the year 2000. The systems were not designed to process dates after 1999. This design error can be explained by the fact that the memory was limited. It was actually a conception error made due to negligence and ignorance of this case scenario.  
+This bug didn't have huge negative effects on the world, but it did cause panic and considerable sums of money were spent in order to fix the issue on all devices.
+There is a similar bug known as the Year 2038 bug or Y2038 bug which will cause a similar problem in 2038 and will show 1901 instead. It will mainly affect the Linux OS. Switching to 64 bits for storing the date will solve the problem definitively. Indeed, the issue will only present itself again in 250 billion years. Scientists affirm it will not be a problem anymore because the Earth will disappear in 4.5 billion years.  
+This bug is local even if it affects systems globally because the root of the problem is easily identifiable, it is the structure and format of the date that cause the issue.  
+This bug could have been noticed earlier by testing extreme values, mainly the maximum date the clock could display.
+Even then, this scenario could have been avoided by having a more preventative approach : by preparing the migration from the start and not waiting until the last moment to act.  
+We can imagine this was not taken into consideration because the original system has been created long ago and reused ever since. At the time, perhaps the creator never even considered the program would spread so widely and be kept aronde for so long.
+
+
+
+2.  We chose the bug number 797 ”SetUniqueList.createSetBasedOnList doesn't add list elements to return value”. This bug is resolved and was due to a careless mistake in which the contributor accidentally deleted a line. This line contained a call to the “addAll” method. We can classify the bug as local since we can clearly pinpoint the exact line where the mistake was made. The solution to this bug is obviously to rewrite the line.  
+It does not seem like the contributors added tests to detect this particular type of mistake, although it may be amongst the more simple type of mistakes to detect.
+
+
+
+3.  If Netflix doesn’t work well enough in one geographical area, they redirect the user somewhere else with a better connection. Using this method, Netflix temporarily increases the latency for the user but doesn’t stop the service, because if they do, even for just a few seconds, the user will stop using the service, especially if this problem occurs too often, which is extremely bad for Netflix. That’s why Netflix uses chaos engineering to limit this deconnection.  
+The metric used by Netflix to characterize the “steady state” is the SPS which means (Stream) Starts Per Second. These metrics evaluate the number of users. When this value decreases drastically, this means that the service is not good enough to keep users on the platform. That way, the quality of their chaos engineering can be evaluated : if the users are satisfied with the service and if they can watch their content without issues.  
+In order to manage this SPS, we want to know the range this value can take due to real world events. To simulate those, we can increase the latency, have some requests fail or even make an entire area unavailable. These experiments allow for a “healthy” global system and prevent fatal errors and failures.  
+However, it is very expensive to cause this kind of event on the real system, we prefer to simulate it when it is possible. Obviously, in such a complex system it is hard to recreate a perfect simulation. This is why issues are nonetheless being simulated on the real system while it is working.  
+Even though it popularized it, Netflix is not the only one using this method. For instance we can talk about the SNCF which uses chaos engineering to regulate the rail traffic. If a train has an issue, the service should be able to globally degrade the service a little in order to not stop it entirely. SNCF is infamous for being late and so, while Netflix decreases the quality of their users’ connections, SNCF delays their trains because more important lines are being taken care of. The value they observe to manage their chaos engineering isn’t the viewership, but rather the global latency of their trains.  
+
+
+
+4.  WebAssembly is a modern low-level tool for programming for the Web, although it is not technically a language, it can be treated as such.  
+A particularity of WebAssembly is to use formal precise semantics and syntax. While it forces the user to follow it, it has numerous advantages. Low-level code can be quite confusing but WebAssembly is much easier to understand and explain, less ambiguous, all the while maintaining correct performances. WebAssembly’s type system is extremely simple which aids verification. As such, compilation and validation are made much more simple. It should be noted that despite being formal, WebAssembly is nonetheless very flexible.  
+One of WebAssembly’s main strengths is also its portability, which is lacking in low-level Web coding. The format is made to avoid incompatibility issues and while it may sacrifice performances on some machines, the results are consistent across all systems. Determinism is heavily prioritized, whether for multiple tests on the same machine or on others.  
+In order to achieve this result, memory safety must be guaranteed, which is something WebAssembly prides itself in and greatly worked on.  
+That being said, as fantastic as WebAssembly seems to be, it is far from immune from testing and verification as a whole. And indeed, WebAssembly was developed with it in mind and actively encourages doing so, thanks to it being clear and concise.  
+
+
+
+5.  This paper presents a mechanised specification of WebAssembly.
+The mechanisation follows the idea of “eyeball closeness”, that is to say, there is an almost line to line textual correspondence between the official specification and the mechanisation. That means someone familiar with the original specification should have no trouble with the mechanisation. The mechanisation also defines more reduction rules, such as some regarding types to make the code cleaner, several function behaviours are also implemented. On some occasions, the original WebAssembly specification and its draft are not quite identical and while the official paper is prioritised, the draft can offer unique functionalities or aid with compatibility.  
+Some features were not quite as well documented as the rest, as such new models were made for the mechanisation, which exposed undocumented flaws.  
+The mechanisation was heavily used to prove the soundness of WebAssembly, especially its type system, and to uncover new issues, since this proof did not exist yet. In order to do this, the authors of the paper needed to establish many lemmas to obtain the result through induction.  
+One question can be raised, how can we prove that the mechanisation itself is correct ?
+For the validation and verification, an interpreter and a type checked, completely separated from the mechanisation, were used. These independant tools are of course verified on their own beforehand. Since they are separate and proven sound, they safely be used to verify the mechanisation. The interpreter being separate is additionally slightly more performant.  
+Despite having been verified numerous times, WebAssembly still had many hidden flaws. Naturally, we should assume the same for the new specification. It is almost certain that issues slipped through the cracks and so testing is once again a necessary measure.
