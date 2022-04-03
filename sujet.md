@@ -11,3 +11,28 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+1. We chose an article describing one of the most destructive bug in the history of software engineering. The Ariane 5 rocket destroyed itself after 37 seconds of flight. The problem was caused by an interger overflow in the memory register of the calculator used by the pilot. It caused a failure in the navigation system of the rocket which cause the rocket to selfdestruct. This article says that the problem was caused by an error in conversion : they used code coming from the Ariane 4 rocket code in the Ariane 5 code but Ariane 4 was using 16 bits integer and the Ariane 5 was using 32 bits floats which caused an error in conversion because the sensor returned a value which couldn't be contain with 16 bits. So the solftware thought that the rocket was taking the wrong direction and caused the rocket to selfdestruct.
+We can say that the consequences were only economic and there were no human losses. However if they had done system tests in order to validate the globality of the Ariane 5 system correctly, the bug would have been detected before launching Ariane 5 and the selfdestruction of the rocket wouldn't have happened. This bug is a global bug because it's from the interaction between the different part of the rocket.
+
+source : https://hal.inria.fr/inria-00073613/document
+
+2. Using a specific case, the class Flat3Map was generating an IllegalStateException while traversing with Flat3Map.entrySet(). It was a local bug because it is specific to a part of the code. The reason for this problem was that there was a problem with the EntryIterator.remove() method in the Flat3Map java class. It removed the element before getting the key of said element. The contributors added a test case which was causing the IllegalStateException to ensure that the bug is detected if it reappears in the future.
+
+source of the bug : https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-734?filter=doneissues
+
+3. Nextflix runs different experimentations such as :
+- terminate virtual machine instances
+- inject latency into requests between services
+- fail requests between services
+- fail an internal service
+- make an entire Amazon region unavailable
+The requirements for these experimentations is to define a steady­-state behavior of the system and choose a metric that charecterize this steady state. The metrics that Netflix use are the number of stream start per second and the nulber of new account signups per second. Some results these experiments produced for Netflix are : 
+- A server is overloaded, and takes an increasing amount of time to respond to requests. One of the clients places outbound requests on an unbounded local queue. Over time, the queue consumes more and more memory, causing the client to fail.
+- A client makes a request to a service that is fronted by a cache. The service returns a transient error which is incorrectly cached. When other clients make the same request, they are served an error response from the cache.
+Netflix isn't the only one to use theses techniques, Amazon, Google, Microsoft and Facebook also use these.
+These experiments like shutting down servers could be carried in other organizations such as e-commerce site by using the number of completed purchases per second as metric. It could also be used in adserving by using the number of ads viewed by users per second.
+
+4. The main advantages of having a formal specification for WebAssembly are to have compact representation, efficient validation and compilation, and safe low to no-overhead execution. Which make WebAssembly safe, fast and portable. In our opinion, we still need to test WebAssembly implementations because having a formal specification doesn't rule out a bug somewhere in the code. 
+
+5. The main advantages of the mechanized specification are the creation of a mechanised proof for the type soundness properties and the correction of the specification which was unsound in certain cases. The other artifacts that were derived from this work are a verified executable interpreter and type checker. The authors verified the specification by sucessfully passing the official WebAssembly conformance test suite and by conducting fuzzing experiments. This new specification doesn't remove the need for testing because there's a possibility that the code doesn't behave as it is intended.
