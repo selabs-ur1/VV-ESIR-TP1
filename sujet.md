@@ -11,3 +11,21 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+1. https://www.cnetfrance.fr/news/iphone-13-un-bug-logiciel-lui-fait-voir-la-vie-en-rose-39936197.htm
+
+Certains iPhone 13, ont subi un bug logiciel qui rendait l'écran rose et le téléphone inutilisable après des problèmes de GPS ou de batterie. Certains utilisateurs ont eu la chance de pouvoir se faire remplacer leurs téléphones et d'autres n'ont pas eu cette chance là vu que le problème n'est pas matériel mais logiciel. Apple a finalement reglé tous ces bugs à l'aide d'une récente mise à jour de leur système d'exploitation IOS
+
+
+2. Parmi les bugs qui ont été résolu, le 796 (https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-796?filter=doneissues) est un bug local car il est directement lié à une erreur dans le code. En effet il fait suite à la suppression de l'appel à une fonction (Sûrement par un développeur) qui empêche une fonction de correctement se comporter. Le contributeur a donc fait un pull request pour corriger le bug et en plus, il a ajouté un test pour que le testeur puisse savoir si la même erreur se produit afin de l'éviter plus tard.
+
+3. Les expériences effectuées ont été de verifier si le systeme fonctionne sans problème, faire des tests en simulant des erreurs, voir la différence que cela crée et faire en sorte que ceci soit automatique pour ne pas que les ajouts ne créent de problèmes. Le Chaos Engineering n'est pas seulement utilisé par netflix mais par plusieurs autres entreprises.
+
+4. En informatique, les méthodes formelles sont des techniques permettant de raisonner rigoureusement, à l'aide de logique mathématique, sur un programme informatique ou du matériel électronique numérique, afin de démontrer leur validité par rapport à une certaine spécification. Elles reposent sur les sémantiques des programmes, c'est-à-dire sur des descriptions mathématiques formelles du sens d'un programme donné par son code source (Wikipedia)
+
+Les principaux avantages sont que la sémantique est sûre, rapide et portable; sûr à exécuter, rapide à exécuter indépendants de la langue, du matériel et de la plate-forme, déterministe et facile à raisonner, interopérabilité simple avec la plateforme Web, compact et facile à décoder, facile à valider et à compiler, facile à générer pour les producteurs, diffusable et parallélisable
+
+Même s’il s’agit d’un langage binaire, nous devons le tester si nous voulons éviter les bugs ou les comportements inattendus.
+
+5. Les principaux avantages de la spécification mécanisée sont la création d’une preuve mécanisée des propriétés de résistance du type et la correction de la spécification qui n’était pas forte dans certains cas.
+L'auteur réussit tous les tests de conformité de langage de base disponibles dans le référentiel WebAssembly, mais cela ne signifie pas que nous n’avons pas besoin de test.
+
