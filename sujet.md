@@ -11,6 +11,7 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+GEFROY Noam, METAYRER Stevan
 
 1. Le bug qu'on a choisi est le [DAO bug](https://web.archive.org/web/20170620012726/https://www.nytimes.com/2016/06/18/business/dealbook/hacker-may-have-removed-more-than-50-million-from-experimental-cybercurrency-project.html). Il s'agit d'un bug concernant la blockchain Ethereum datant de 2016 et plus particulièrement dans le projet de la DAO (Decentralized Autonomous Organization). Le bug a résulté à une attaque sur ladite blockchain par un hackeur qui a dérobé environ 50 millions de dollars en Ether. Le bug est un bug dit global car il se base sur la structure et non à une ligne de code en particulier.
 
