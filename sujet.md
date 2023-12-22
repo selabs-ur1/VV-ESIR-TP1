@@ -11,3 +11,44 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+### 1. Article about the discovery of a software bug
+
+- Article : [Next – Firefox 112.0.1 corrige un bug gênant avec les cookies](https://next.ink/brief_article/firefox-112-0-1-corrige-bug-genant-avec-cookies/)
+- Le [rapport de bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1827669) sur le tracker de bug de Mozilla
+
+Le bug a été trouvé après la mise à jour 112 de Firefox. Firefox nettoyait les cookies du navigateurs sans que l'utilisateur le souhaite. Les cookies ont eu leur date de validité changée. C'est un bug local.
+
+Répercussions sur les utilisateurs : préférences et statut de login oubliés, c'est un peu gênant.
+Probablement qu'un test précis aurait aidé, même si on imagine que Firefox est déjà bien testé (en effet : [Mozilla Code Coverage](https://coverage.moz.tools/)).
+
+### 2. Apache Bug
+
+- [Rapport de bug](https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-709?filter=doneissues)
+- [Pull request](https://github.com/apache/commons-collections/pull/66)
+
+Le bug a été découvert en 2019. Il concerne la collection MultiSet qui, lorsqu'on a retiré le dernier élément, ne renvoie pas 0 comme nombre d'éléments lors de l'appel de la fonction getCount(). C'est un bug local puisque le bug vient d'une mauvaise programmation. La solution trouvée est d'affecter un 0 à un entier. Un test a été ajouté afin de vérifier la correction de ce bug.  
+
+### 3. Chaos Engineering
+
+Netflix effectue plusieurs manipulations comme faire échouer un service interne, rendre une région entière du cloud Amazon inaccessible ou encore ajouter de la latence dans les requêtes entre services.
+
+Les variables observées sont par exemple les crashs des serveurs, les erreurs de disques.
+
+Amazon, Google, Microsoft et Facebook utilisent des techniques de test de résilience pas trop différentes selon le papier.
+
+Facebook pourrait l'utiliser pour tester comment le système gère les erreurs de latence, la congestion du réseau à travers la planète en observant les taux d'erreur et de réponse.
+
+### 4. Web Assembly
+
+Une spécification formelle permet aux développeur.euse.s de pouvoir faire des analyses statiques plus efficaces et donc de coder plus rapidement, efficacement et d'éviter beaucoup d'erreurs. Même avec une spécification précise et formelle, on ne peut pas se dispenser de faire des tests sur notre programme. 
+
+### 5. Mechanized specification
+
+Les principaux avantages de le spécification mécanisée sont :
+- faire une preuve mécanisée de l'intégrité des types de WebAssembly (apparemment ça a permis de dévoiler plusieurs problèmes dans la spécification, qui a été améliorée depuis)
+- un interpréteur d'exécutable vérifié et un vérificateur de typage distincts
+
+La spec mécanisée a été vérifiée à l'aide des tests de conformité mis dans le dépôt WebAssembly (tests générés avec CSmith et convertis en WebAssembly avec Binaryen).
+
+Non ça ne remplace pas le besoin de tester le langage. Il peut y avoir des aspects du langage ou des implémentations qui ne sont pas couverts par la spécification. Mais plus généralement, les tests peuvent montrer des erreurs du monde réel. En effet, l'auteur du papier parle de la pratique du fuzzing sur des implémentations réelles provenant de l'industrie.
