@@ -11,3 +11,32 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+Question 1:
+	Il y a eu un bug logiciel dans le système de la sonde spatiale Mariner 1 lancée le 22 juillet 1962 à Cap Canaveral, en Floride. Quelques minutes après le début du vol, une antenne de guidage embarquée tombe en panne ce qui a pour conséquences d’utiliser un système de secours pour guider la sonde.
+Le bug apparaît dans ce système de secours, il manque un tiret haut dans les équations utilisé pour traiter et traduire les données de suivi en instruction de vol. On a donc ici un bug local. Le bug a été vu lorsque la compensation de certains mouvements de la sonde ont été incorrecte ce qui a eu pour conséquence que la sonde a voulu atterrir dans une zone habitée et donc suivi l’ordre d’autodestruction de la sonde. Cela a coûté 18,2 millions de dollars à l’entreprise.
+Nous pensons effectivement que tester ce logiciel de secours aurait pu permettre de trouver le bug puisque avec une situation de test de la correction de trajectoire de la sonde on aurait vu une différence entre ce que le logiciel propose et l’oracle attendu.
+lien: https://horustest.io/blog/les-10-bugs-informatiques-les-plus-couteux-de-l-histoire/ La sonde spatiale Mariner 1 : dans le vent
+Question 2:
+	On a choisi un bug qui advient lors du passage d’un test, le test appelle une méthode avec un argument null et le développeur voulait donc qu’il retourne une exception NPE mais le test ne retourne pas une exception mais échoue. On a donc un bug local présent dans une méthode qui entraîne un mauvais retour. Pour résoudre ce problème, ils ont ajouté une ligne Objects.requireNonNull(equator, "equator"); dans la méthode pour que l’appelle de la méthode avec un argument null lors du test renvoie un NPE. lien:https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-813?filter=doneissues 
+
+
+Question 3:
+
+
+  Le document expose les pratiques de génie logiciel de Netflix, mettant en avant la discipline émergente du "Chaos Engineering". Les expériences, orchestrées par des outils tels que Chaos Monkey, Chaos Kong, et le Failure Injection Testing (FIT), visent à tester la résilience du système en injectant délibérément des défaillances dans l'environnement de production. Ces expériences variées incluent la terminaison aléatoire d'instances de machines virtuelles, la simulation de pannes d'une région Amazon EC2 entière, et la manipulation des requêtes entre services Netflix pour évaluer la dégradation gracieuse du système. Les exigences pour ces expériences comprennent des outils spécialisés, une surveillance rigoureuse, et une équipe d'ingénierie réactive. Les variables observées englobent le temps de réponse du système, les taux d'erreur, la dégradation des services et la réponse des utilisateurs. Les résultats principaux indiquent une amélioration de la résilience du système et une confiance accrue des ingénieurs. D'autres géants technologiques comme Amazon, Google, Microsoft, et Facebook semblent également appliquer des techniques similaires, suggérant une adoption répandue de ces pratiques dans l'industrie. La mise en œuvre de telles expériences dans d'autres organisations suppose une personnalisation des expériences en fonction des systèmes spécifiques, l'adaptation d'outils similaires mais il faut savoir que certaines organisations sont simplement incompatibles avec le Chaos Engineering (enjeux trop importants ex: médical,spatial…).
+
+
+
+
+Question 4:
+	
+  Une spécification formelle pour webAssembly permet d’avoir une description détaillée et précise des règles, des comportements et des propriétés du langage. Pour pouvoir ensuite utiliser de façon plus sûre un langage bas niveau pour faire du développement web. Ce qui permet donc généralement de garder un langage bas niveau avec tous ces avantages et de le rendre plus accessible grâce à la spécification formelle, c’est à dire plus clair et précis, applicable sur différentes plateformes, plus facile à valider et vérifier, plus sûre et permet une meilleure évolution du langage.
+Mais cela ne signifie pas que les projets en webassembly ne doivent plus être testés puisque la spécification le rend plus accessible et plus facile à tester mais n’assure aucunement que les développeurs ne feront pas d’erreur ou que leur implémentation sera fonctionnelle et fera ce qui est attendu. Il faudra donc toujours tester les projets malgré une spécification formelle.
+
+Question 5:
+
+  La spécification mécaniser permet une cohérence et une précision élevé du langage, d’avoir un interpréteur et un vérificateur de type s’assurant de la conformite aux regles du langage, des preuves de cohérences du système, une détection des erreurs dans la spécification officielle et donc leur correction, l’évolution du langage grâce à un dialogue avec le groupe de travail de WebAssembly. De plus, cette spécification mécanique est validée expérimentalement et publiée publiquement.
+La spécification mécanique a donc permis d’améliorer la spécification formelle originale du langage et d’apporter de nouveau artefact de vérification autour du langage.
+La spécification à été vérifié expérimentalement comme dit précédemment.
+Mais l'arrivée de cette nouvelle spécification n'enlève pas le besoin de faire des tests malgré l’apport de nouveaux outils qui relève certaines erreurs et donc empêche les problèmes telle que de typage. Mais les erreurs au niveau de l'implémentation et de la validation du programme reste à la charge du développeur et reste nécessaire.
