@@ -53,3 +53,46 @@ Ce bug concerne un problème dans la documentation JavaDoc. La bibliothèque con
 @throws IndexOutOfBoundsException if index < 0 or index >= size().
 Ainsi, le commentaire est cohérent avec le comportement de la méthode. Comme il s’agissait d’un bug lié à un commentaire mal rédigé, aucun test n’a été mis en place.
 
+
+3. Netflix et le Chaos Engineering
+( Selon le papier intitulé “Chaos Engineering” publié par Netflix dans IEEE Software et l’article “The Business Case for Chaos Engineering” publié par la IEEE Computer Society )
+
+
+Types d’expériences : 
+    -Simulation de pannes régionales (simuler la défaillance d’un centre de données) pour tester la gestion du trafic si une région entière tombe.
+    -Injection de latence (ajouter de la latence entre les services) pour observer l’impact sur les performances.
+    -Suppression partielle de données (supprimer des données) pour vérifier la récupération. 
+    -Défaillance fonctionnelle (provoquer des erreurs aléatoires dans certaines fonctions) pour évaluer la gestion des erreurs.
+    -Tests de charge (augmenter artificiellement le trafic) pour simuler des charges élevées et tester la capacité du système.
+
+
+Variables observées : 
+    -Disponibilité du service : Capacité du système à rester opérationnel malgré les pannes.
+    -Taux de réponse : Temps de réponse du système sous stress.
+    -Taux d’erreur : Fréquence des erreurs pendant les tests.
+    -Résilience des données : Capacité à récupérer et maintenir l'intégrité des données après des pertes.
+
+
+Résultats obtenus : 
+→ Meilleure résilience (Correction des faiblesses avant qu'elles ne causent des pannes)
+→ Moins d’interruptions (Réduction des temps d'arrêt)
+→ Performances améliorées (Optimisation pour mieux gérer les charges élevées)
+
+
+Netflix est-elle la seule entreprise à réaliser ces expérimentations ?
+→ Non, Netflix n'est pas la seule à utiliser le Chaos Engineering. D'autres entreprises : Google, Facebook, Amazon ..
+
+→ Applications dans d'autres organisations :
+    *Systèmes bancaires :
+        -Expériences possibles : Simuler des pannes de serveurs, des défaillances de base de données ou des interruptions de réseau.
+        -Variables à observer : Disponibilité des services financiers, temps de réponse des transactions, sécurité et intégrité des données.
+    *Secteur de la santé :
+        -Expériences possibles : Tester la résilience des systèmes de gestion des dossiers médicaux électroniques en simulant des pannes de serveur ou des erreurs de données.
+        -Variables à observer : Continuité de l'accès aux dossiers médicaux, temps de réponse des systèmes, et précision des informations médicales.
+    * E-commerce :
+        -Expériences possibles : Simuler des pics de trafic lors de promotions ou des interruptions de paiement pour tester la gestion de la charge.
+        -Variables à observer : Performance des sites web, temps de réponse lors des pics de trafic, et intégrité des transactions.
+    *Fournisseurs de cloud :
+        -Expériences possibles : Simuler des pannes de machines virtuelles, des interruptions de réseau ou des défaillances de stockage.
+        -Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge.
+
