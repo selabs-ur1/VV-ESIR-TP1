@@ -11,3 +11,33 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+1. Un exemple d'article récent : 
+La panne informatique mondiale du 19 juillet 2024  causée par une mise à jour défectueuse du logiciel de sécurité Falcon Sensor de CrowdStrike. 
+
+
+Description du bug :
+Le bug a été causé par une mise à jour défectueuse du logiciel de sécurité Falcon Sensor, utilisé pour protéger les systèmes Windows. Cette mise à jour a introduit une anomalie qui empêchait les systèmes de démarrer correctement et de se connecter au réseau. 
+
+
+Nature du bug : 
+⇒ Bug global : 
+- Des milliers de systèmes Windows utilisant le logiciel Falcon Sensor ont été touchés.
+- Interaction complexe entre la mise à jour et le système, affectant tout le réseau
+→ dysfonctionnements critiques à grande échelle partout dans le monde.
+
+Conséquences du bug : 
+Impact sur les utilisateurs :
+Interruption des services : Les systèmes Windows ne pouvaient plus démarrer, causant des pertes financières importantes. 
+Ce bug a paralysé de nombreux secteurs, notamment les compagnies aériennes (des avions ont été cloués au sol), les banques, et les marchés financiers..
+Impact sur l’entreprise (CrowdStrike) :
+Perte de confiance : Les clients doutent de la fiabilité de ses solutions.
+Des coûts de réparation importants pour créer des correctifs et gérer les réclamations des entreprises touchées.
+
+Spéculation sur les tests : Les tests qui auraient pu éviter le bug
+La relecture du code, tout simplement
+Les tests unitaires (tester chaque module indépendamment des autres)
+Les tests d’intégration (suivant un ordre pour bien intégrer les classes les unes après les autres, s’assurant qu’elles interagissent sans problèmes)
+Les test système , en tant qu’ensemble pour vérifier qu’il fonctionne correctement dans son environnement final
+Tests de Régression : Voir si les nouvelles modifications ont introduit de nouveaux bugs. Ce qui est crucial pour les mises à jour logicielles !!!
+
