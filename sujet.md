@@ -12,4 +12,19 @@
 
 ## Answers
 
-Elouahjvjvjnsivvoa
+1. Roundoff Error and the Patriot Missile
+   
+Le bug dans le système de missiles Patriot était causé par une troncature de la représentation binaire du temps dans l'arithmétique en virgule flottante. Le système suivait les missiles Scud à l'aide d'une horloge interne qui mesurait le temps en dixièmes de seconde sous forme d'entiers. Cependant, en raison des limites d'un registre de 24 bits, la conversion du temps de l'horloge en virgule flottante était inexacte. En particulier, la représentation binaire non terminée de 0,1 seconde (en base 2) provoquait une erreur de timing légère mais cumulative à mesure que le système fonctionnait plus longtemps. Cette erreur augmentait proportionnellement au temps écoulé. Après 100 heures de fonctionnement, l'écart de temps atteignait 0,3433 secondes, ce qui était suffisant pour qu'un missile Scud parcoure plus d'un demi-kilomètre et échappe à l'interception.
+
+
+En fait, le bug est considéré comme local dans le sens où il affectait spécifiquement la conversion du temps dans certains points du programme Patriot. Il ne touchait pas toute l'infrastructure informatique du système, mais se manifestait dans les calculs de synchronisation précis qui étaient cruciaux pour le suivi des missiles.
+
+
+L'échec s'est manifesté lorsqu'un missile Scud a frappé les casernes de l'armée américaine à Dhahran, en Arabie Saoudite, entraînant la mort de 28 militaires. L'erreur de suivi a empêché le missile Patriot d'intercepter correctement le Scud entrant.
+
+
+Pour les clients (forces militaires) : Cet échec a soulevé des inquiétudes importantes quant à la fiabilité du système de défense Patriot, en particulier dans des situations de guerre à fort enjeu. L'erreur a révélé que le système n'était pas conçu pour gérer les missiles balistiques à haute vitesse qu'il a rencontrés lors de la guerre du Golfe, entraînant une perte de confiance dans le système.
+Pour l'entreprise (Raytheon, le contractant derrière le Patriot) : Le bug a nui à la réputation de Raytheon en tant que contractant de défense, car le système a échoué lors d'une mission critique. De plus, il y a eu un examen public sur l'efficacité des systèmes de défense militaire et sur la question de savoir si des tests appropriés avaient été effectués avant le déploiement de ces systèmes en zone de guerre.
+
+
+Rétrospectivement, des tests dans les bonnes conditions — en particulier pour de longues périodes de fonctionnement combinées à des scénarios d'interception de missiles à haute vitesse — auraient probablement révélé le bug. Comme l'erreur de synchronisation devenait significative uniquement après de nombreuses heures de fonctionnement continu, des simulations ou des tests en temps réel reproduisant ces conditions auraient pu signaler l'erreur cumulative avant le déploiement du système.
