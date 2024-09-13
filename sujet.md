@@ -43,3 +43,11 @@ Spéculation sur les tests : Les tests qui auraient pu éviter le bug
     -Les test système , en tant qu’ensemble pour vérifier qu’il fonctionne correctement dans son environnement final
     -Tests de Régression : Voir si les nouvelles modifications ont introduit de nouveaux bugs. Ce qui est crucial pour les mises à jour logicielles !!!
 
+
+
+3. Nom du bug : A potential misleading comment
+
+Ce bug concerne un problème dans la documentation JavaDoc. La bibliothèque concernée s’appelle Apache Commons Collections. Dans la situation présente, le commentaire associé à la méthode ne correspond pas au comportement réel de la méthode. Résultat : les développeurs sont induits en erreur. Il s’agit d’un bug global car il affecte tous les utilisateurs de la librairie Apache Commons Collections. Pour corriger cette erreur, il suffit de modifier la documentation JavaDoc de la manière suivante : 
+@throws IndexOutOfBoundsException if index < 0 or index >= size().
+Ainsi, le commentaire est cohérent avec le comportement de la méthode. Comme il s’agissait d’un bug lié à un commentaire mal rédigé, aucun test n’a été mis en place.
+
