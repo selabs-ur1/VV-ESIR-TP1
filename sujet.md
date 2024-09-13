@@ -26,18 +26,20 @@ Nature du bug :
 - Interaction complexe entre la mise à jour et le système, affectant tout le réseau
 → dysfonctionnements critiques à grande échelle partout dans le monde.
 
+
 Conséquences du bug : 
-Impact sur les utilisateurs :
-Interruption des services : Les systèmes Windows ne pouvaient plus démarrer, causant des pertes financières importantes. 
-Ce bug a paralysé de nombreux secteurs, notamment les compagnies aériennes (des avions ont été cloués au sol), les banques, et les marchés financiers..
-Impact sur l’entreprise (CrowdStrike) :
-Perte de confiance : Les clients doutent de la fiabilité de ses solutions.
-Des coûts de réparation importants pour créer des correctifs et gérer les réclamations des entreprises touchées.
+    *Impact sur les utilisateurs :
+        -Interruption des services : Les systèmes Windows ne pouvaient plus démarrer, causant des pertes financières importantes. 
+        -Ce bug a paralysé de nombreux secteurs, notamment les compagnies aériennes (des avions ont été cloués au sol), les banques, et les marchés financiers..
+    *Impact sur l’entreprise (CrowdStrike) :
+        -Perte de confiance : Les clients doutent de la fiabilité de ses solutions.
+        -Des coûts de réparation importants pour créer des correctifs et gérer les réclamations des entreprises touchées.
+
 
 Spéculation sur les tests : Les tests qui auraient pu éviter le bug
-La relecture du code, tout simplement
-Les tests unitaires (tester chaque module indépendamment des autres)
-Les tests d’intégration (suivant un ordre pour bien intégrer les classes les unes après les autres, s’assurant qu’elles interagissent sans problèmes)
-Les test système , en tant qu’ensemble pour vérifier qu’il fonctionne correctement dans son environnement final
-Tests de Régression : Voir si les nouvelles modifications ont introduit de nouveaux bugs. Ce qui est crucial pour les mises à jour logicielles !!!
+    -La relecture du code, tout simplement
+    -Les tests unitaires (tester chaque module indépendamment des autres)
+    -Les tests d’intégration (suivant un ordre pour bien intégrer les classes les unes après les autres, s’assurant qu’elles interagissent sans problèmes)
+    -Les test système , en tant qu’ensemble pour vérifier qu’il fonctionne correctement dans son environnement final
+    -Tests de Régression : Voir si les nouvelles modifications ont introduit de nouveaux bugs. Ce qui est crucial pour les mises à jour logicielles !!!
 
