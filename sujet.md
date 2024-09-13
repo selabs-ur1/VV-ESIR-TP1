@@ -28,3 +28,9 @@ Pour l'entreprise (Raytheon, le contractant derrière le Patriot) : Le bug a nui
 
 
 Rétrospectivement, des tests dans les bonnes conditions — en particulier pour de longues périodes de fonctionnement combinées à des scénarios d'interception de missiles à haute vitesse — auraient probablement révélé le bug. Comme l'erreur de synchronisation devenait significative uniquement après de nombreuses heures de fonctionnement continu, des simulations ou des tests en temps réel reproduisant ces conditions auraient pu signaler l'erreur cumulative avant le déploiement du système.
+
+2. [COLLECTIONS-766] fix ci build (or to say, fix everything that wrongly blocked the ci build.)
+Le bug est global car il est lié à la dépendance à une version de jdk plus récente que la version utilisée dans le code.
+Une fonction a été mise à jour dans la nouvelle version de jdk mais le code n'avait pas été mis à jour en conséquence.
+Ainsi les modification apportées permettent de passer de l'ancienne version (Math.floorMod(long,int)) à la nouvelle (Math.floorMod(long,long)) en forçant l'utilisation de variables de type "long". 
+Le bug concerne directement un fichier de test, donc aucun ajout de test à été effectué.
