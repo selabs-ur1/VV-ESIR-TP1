@@ -37,4 +37,6 @@ Finally the proof of Soundness, in fact the formal semantics include proofs of c
 
 Although the formal specifications guarantee theoretical correctness, practical testing is still needed for verifying implementations. Testing ensures that the language not only in phase with its theoretical model but also performs optimally and complies with real-world use cases across different contexts
 
-5. 
+5. The mechanized specification of WebAssembly, created using Isabelle, provides several key advantages over the initial formalization. It increases the rigor of the specification, ensuring correctness through automated proof checking, which minimizes human error. This mechanization process also uncovered several issues in the original formal specification, leading to necessary corrections that improved the soundness of the WebAssembly type system. Additionally, the mechanization produced useful artifacts, such as a verified executable interpreter and type checker, both proven correct with respect to the formal model. The specification was validated through conformance testing and differential fuzzing, which confirmed the correctness of the interpreter compared to industry implementations. However, despite the benefits of mechanization, testing remains essential, as proofs are limited by the scope of the formal model, and real-world implementations require thorough validation. Thus, the mechanized specification complements but does not entirely eliminate the need for testing.
+
+
