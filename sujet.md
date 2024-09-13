@@ -34,3 +34,32 @@ Le bug est global car il est lié à la dépendance à une version de jdk plus r
 Une fonction a été mise à jour dans la nouvelle version de jdk mais le code n'avait pas été mis à jour en conséquence.
 Ainsi les modification apportées permettent de passer de l'ancienne version (Math.floorMod(long,int)) à la nouvelle (Math.floorMod(long,long)) en forçant l'utilisation de variables de type "long". 
 Le bug concerne directement un fichier de test, donc aucun ajout de test à été effectué.
+
+3. 
+
+Speculate how these experiments could be carried in other organizations in terms of the kind of experiment that could be performed and the system variables to observe during the experiments.
+
+Expériences Concrètes :
+- Chaos Monkey : Termine aléatoirement des instances de machines virtuelles en production pour s'assurer que les services peuvent gérer des pannes d'instances.
+- Chaos Kong : Simule la panne d'une région entière d'Amazon EC2 afin de vérifier que les systèmes de Netflix peuvent supporter des pannes à grande échelle en redirigeant le trafic vers des régions saines.
+- Tests d'injection de pannes (FIT) : Introduit des pannes de réseau et des latences entre les services de Netflix pour observer comment le système se dégrade de manière progressive sous contrainte.
+
+Exigences des Expériences :
+Les expériences sont réalisées dans des environnements de production pour capturer des interactions réelles.
+Le système est surveillé pour observer des mécanismes de repli (fallback), où les services non-critiques se dégradent de manière progressive (par exemple, le contenu personnalisé revient à des valeurs par défaut raisonnables).
+
+Variables Observées :
+Les démarrages de flux par seconde (SPS), qui suivent le nombre d’utilisateurs qui commencent un flux vidéo chaque seconde. Le SPS est utilisé comme indicateur de la santé globale du système.
+La charge CPU, la latence, et les performances au niveau des services pour détecter des dégradations.
+
+Principaux Résultats :
+Les ingénieurs de Netflix ont développé des systèmes robustes où les services peuvent se dégrader de manière progressive en cas de pannes.
+Les pannes critiques du système ont été réduites grâce à une expérimentation continue, et les services non-critiques peuvent tomber en panne sans avoir un impact significatif sur l'expérience utilisateur.
+
+Netflix n’est pas la seule entreprise à réaliser ces expériences. Des entreprises comme Amazon, Google, Microsoft et Facebook ont adopté des approches similaires pour vérifier la résilience de leurs systèmes en cas de panne​.
+
+Dans d'autres secteurs (par exemple, les services financiers, le commerce électronique), les expériences de chaos pourraient se concentrer sur différentes métriques critiques, telles que :
+
+Le taux de complétion des transactions dans une institution financière ou le taux de complétion des commandes dans le commerce.
+La simulation de pannes comme des pannes de bases de données, des retards de réponse d'API, ou des pics inattendus de demandes utilisateurs pourrait aider à valider la résilience.
+L'observation de la capacité de traitement des transactions, des temps de réponse, ou des taux d'erreurs peut mettre en lumière des goulots d'étranglement et des dépendances des services sous contrainte.
