@@ -63,3 +63,21 @@ Dans d'autres secteurs (par exemple, les services financiers, le commerce élect
 Le taux de complétion des transactions dans une institution financière ou le taux de complétion des commandes dans le commerce.
 La simulation de pannes comme des pannes de bases de données, des retards de réponse d'API, ou des pics inattendus de demandes utilisateurs pourrait aider à valider la résilience.
 L'observation de la capacité de traitement des transactions, des temps de réponse, ou des taux d'erreurs peut mettre en lumière des goulots d'étranglement et des dépendances des services sous contrainte.
+
+
+4.
+
+Avantages d'une spécification formelle pour WebAssembly:
+
+1. Sécurité: Elle garantit que le code s'exécute en toute sécurité et empêche des accès non autorisés à la mémoire.
+2. Portabilité: Le code fonctionne de manière cohérente sur toutes les plateformes compatibles WebAssembly, quelle que soit l'architecture matérielle.
+3. Validation rapide : Le code peut être vérifié rapidement et efficacement, assurant qu'il est correct avant son exécution.
+4. Performance: WebAssembly peut être optimisé pour fonctionner à des vitesses proches du code natif.
+
+
+Faut-il encore tester les implémentations ?
+
+Oui, les implémentations WebAssembly doivent toujours être testées. Même avec une spécification formelle, des bugs peuvent apparaître dans le compilateur, le runtime ou dans l'interaction avec d'autres systèmes. Les tests garantissent la performance, la compatibilité et la robustesse des implémentations.
+
+
+5.
