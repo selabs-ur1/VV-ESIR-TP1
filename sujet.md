@@ -45,7 +45,7 @@ Spéculation sur les tests : Les tests qui auraient pu éviter le bug
 
 
 
-3. Nom du bug : A potential misleading comment
+2. Nom du bug : A potential misleading comment
 
 Ce bug concerne un problème dans la documentation JavaDoc. La bibliothèque concernée s’appelle Apache Commons Collections. Dans la situation présente, le commentaire associé à la méthode ne correspond pas au comportement réel de la méthode. Résultat : les développeurs sont induits en erreur. Il s’agit d’un bug global car il affecte tous les utilisateurs de la librairie Apache Commons Collections. Pour corriger cette erreur, il suffit de modifier la documentation JavaDoc de la manière suivante : 
 @throws IndexOutOfBoundsException if index < 0 or index >= size().
