@@ -80,4 +80,20 @@ Faut-il encore tester les implémentations ?
 Oui, les implémentations WebAssembly doivent toujours être testées. Même avec une spécification formelle, des bugs peuvent apparaître dans le compilateur, le runtime ou dans l'interaction avec d'autres systèmes. Les tests garantissent la performance, la compatibilité et la robustesse des implémentations.
 
 
-5.
+5. Avantages:
+- Vérification formelle : La spécification mécanisée fournit une description précise et vérifiée par machine de WebAssembly, plus fiable que les méthodes traditionnelles de formalisation sur papier.
+- Artefacts exécutables : L'auteur a développé un interpréteur exécutable et un vérificateur de types pour WebAssembly, garantissant la solidité du système de types.
+- Identification des problèmes : Le processus a révélé plusieurs insuffisances dans la spécification originale de WebAssembly, telles que des aspects incorrects du système de types, qui ont ensuite été corrigées par le groupe de travail WebAssembly.
+
+Améliorations:
+Oui, la spécification mécanisée a permis d'améliorer la spécification formelle originale. Des problèmes tels que des erreurs dans le système de types et des problèmes de propagation d'exceptions ont été corrigés grâce aux informations obtenues lors de la mécanisation.
+
+Artefacts Dérivés:
+- Interpréteur exécutable : Un interpréteur exécutable vérifié pour WebAssembly a été dérivé de la spécification mécanisée, permettant ainsi des tests et une validation face aux implémentations industrielles.
+- Vérificateur de types : Un vérificateur de types a été développé, vérifié et optimisé pour répondre aux attentes des implémentations industrielles.
+
+Vérification:
+La spécification a été vérifiée à l'aide de preuves mécanisées dans Isabelle, notamment la démonstration de la solidité du système de types de WebAssembly, avec les propriétés de préservation et de progression.
+
+Supprime-t-elle le Besoin de Tests ?
+Non, la nouvelle spécification n'élimine pas le besoin de tests. Bien que la vérification formelle offre des garanties solides, les tests restent nécessaires pour valider l'implémentation dans des scénarios réels et par rapport aux normes industrielles​
