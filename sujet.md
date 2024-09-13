@@ -12,7 +12,9 @@
 
 ## Answers
 
-1. Roundoff Error and the Patriot Missile
+1. 
+
+Roundoff Error and the Patriot Missile
    
 Le bug dans le système de missiles Patriot était causé par une troncature de la représentation binaire du temps dans l'arithmétique en virgule flottante. Le système suivait les missiles Scud à l'aide d'une horloge interne qui mesurait le temps en dixièmes de seconde sous forme d'entiers. Cependant, en raison des limites d'un registre de 24 bits, la conversion du temps de l'horloge en virgule flottante était inexacte. En particulier, la représentation binaire non terminée de 0,1 seconde (en base 2) provoquait une erreur de timing légère mais cumulative à mesure que le système fonctionnait plus longtemps. Cette erreur augmentait proportionnellement au temps écoulé. Après 100 heures de fonctionnement, l'écart de temps atteignait 0,3433 secondes, ce qui était suffisant pour qu'un missile Scud parcoure plus d'un demi-kilomètre et échappe à l'interception.
 
@@ -29,7 +31,10 @@ Pour l'entreprise (Raytheon, le contractant derrière le Patriot) : Le bug a nui
 
 Rétrospectivement, des tests dans les bonnes conditions — en particulier pour de longues périodes de fonctionnement combinées à des scénarios d'interception de missiles à haute vitesse — auraient probablement révélé le bug. Comme l'erreur de synchronisation devenait significative uniquement après de nombreuses heures de fonctionnement continu, des simulations ou des tests en temps réel reproduisant ces conditions auraient pu signaler l'erreur cumulative avant le déploiement du système.
 
-2. [COLLECTIONS-766] fix ci build (or to say, fix everything that wrongly blocked the ci build.)
+2. 
+
+[COLLECTIONS-766] fix ci build (or to say, fix everything that wrongly blocked the ci build.)
+
 Le bug est global car il est lié à la dépendance à une version de jdk plus récente que la version utilisée dans le code.
 Une fonction a été mise à jour dans la nouvelle version de jdk mais le code n'avait pas été mis à jour en conséquence.
 Ainsi les modification apportées permettent de passer de l'ancienne version (Math.floorMod(long,int)) à la nouvelle (Math.floorMod(long,long)) en forçant l'utilisation de variables de type "long". 
@@ -64,15 +69,14 @@ Le taux de complétion des transactions dans une institution financière ou le t
 La simulation de pannes comme des pannes de bases de données, des retards de réponse d'API, ou des pics inattendus de demandes utilisateurs pourrait aider à valider la résilience.
 L'observation de la capacité de traitement des transactions, des temps de réponse, ou des taux d'erreurs peut mettre en lumière des goulots d'étranglement et des dépendances des services sous contrainte.
 
-
 4.
 
 Avantages d'une spécification formelle pour WebAssembly:
 
-1. Sécurité: Elle garantit que le code s'exécute en toute sécurité et empêche des accès non autorisés à la mémoire.
-2. Portabilité: Le code fonctionne de manière cohérente sur toutes les plateformes compatibles WebAssembly, quelle que soit l'architecture matérielle.
-3. Validation rapide : Le code peut être vérifié rapidement et efficacement, assurant qu'il est correct avant son exécution.
-4. Performance: WebAssembly peut être optimisé pour fonctionner à des vitesses proches du code natif.
+-  Sécurité: Elle garantit que le code s'exécute en toute sécurité et empêche des accès non autorisés à la mémoire.
+-  Portabilité: Le code fonctionne de manière cohérente sur toutes les plateformes compatibles WebAssembly, quelle que soit l'architecture matérielle.
+-  Validation rapide : Le code peut être vérifié rapidement et efficacement, assurant qu'il est correct avant son exécution.
+-  Performance: WebAssembly peut être optimisé pour fonctionner à des vitesses proches du code natif.
 
 
 Faut-il encore tester les implémentations ?
@@ -80,7 +84,9 @@ Faut-il encore tester les implémentations ?
 Oui, les implémentations WebAssembly doivent toujours être testées. Même avec une spécification formelle, des bugs peuvent apparaître dans le compilateur, le runtime ou dans l'interaction avec d'autres systèmes. Les tests garantissent la performance, la compatibilité et la robustesse des implémentations.
 
 
-5. Avantages:
+5. 
+
+Avantages:
 - Vérification formelle : La spécification mécanisée fournit une description précise et vérifiée par machine de WebAssembly, plus fiable que les méthodes traditionnelles de formalisation sur papier.
 - Artefacts exécutables : L'auteur a développé un interpréteur exécutable et un vérificateur de types pour WebAssembly, garantissant la solidité du système de types.
 - Identification des problèmes : Le processus a révélé plusieurs insuffisances dans la spécification originale de WebAssembly, telles que des aspects incorrects du système de types, qui ont ensuite été corrigées par le groupe de travail WebAssembly.
