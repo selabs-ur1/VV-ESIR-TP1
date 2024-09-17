@@ -11,3 +11,60 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+1. ([CBS Article](https://www.cbsnews.com/news/microsoft-internet-outages-reported-worldwide/)) A faulty update of Crowdstrike Falcon, an widely used antivirus system for Windows, caused a blue screen error on all Windows devices that used it. This caused a global outage that impacted several companies, for example Delta Airlines and several other airline companies, who saw the majority of their flights get cancelled. Another type of company that was impacted was delivery services, such as FedEx or Starbucks.
+The main source of the bug comes from erroneous data that was introduced into a Falcon configuration file - the channel file. This file was treated by trusted, and consequently elevated parts of Falcon, which could run code from within the OS to validate the contents of the configuration. However, a mismatch of entry counts caused the failure of the treatment procedure, which led to a BSOD.
+Even if the failure was caused by erroneous data, Falcon was unequipped to deal with such cases. The bug comes from either defunct exception handling, or the absence of it. 
+Therefore, we can say that it was a global bug.
+In our opinion, testing the right scenario could have definitely helped to discover the fault, because the failure was most likely caused by a poorly handled exception.
+
+2. We have chosen the bug [UnmodifiableMultiValuedMapTest is flaky](https://issues.apache.org/jira/browse/COLLECTIONS-769) from the tracker. This bug concerns three test functions. This is due to the fact that the `toString` of the `MultiValuedMap` type returns a string formed with all the values contained in the map, but the problem is that the values are arranged in an arbitrary order. Indeed, a map operates with keys that can be of any type, so it is not obvious to have an order for all these types. However, in the tests, the `MultiValuedMap.toString()` is compared to a hardcoded string that follows an order we find logical, with the keys "one, two, three" in ascending numerical order. These keys could also be arranged in alphabetical order, which would result in "one, three, two", making this comparison unreliable. 
+We categorize this bug as local because the `toString` function is used correctly with correct input, and the same goes for `assertEqual`. Here, it’s a lack of caution regarding the behavior of the `MultiValuedMap.toString()`. 
+The solution was to create a helper to test the value of all the map's keys individually, so as not to have to use `MultiValuedMap.toString()`.
+
+3.
+
+
+answer:
+____les expériences concrètes réalisées par Netflix____
+
+les expériences concrètes réalisées par netflix sont entre autre :
+*l utilisation du service interne Chaos Monkey qui est un outil qui termine de manière aléatoire des instances de machines virtuelles dans 
+le système de production afin de pouvoir tester la capacité du service a pouvoir gérer les pannes d instances individuelles
+
+*l utilisation de chaos kong 
+Chaos kong quant à lui simule la défaillance d une région entière d Amazon EC2 pour évaluer la résilience du système face à des pannes à grande échelle.
+
+*l introduction  des erreurs dans les communications entre les services Netflix pour vérifier que le système continue de 
+fonctionner même en cas d échecs des demandes.
+
+____les exigences pour ces expériences______
+
+les exigences pour ces expériences sont tout d abord arriver à définir un État Stable cela signifie que 
+les ingénieurs netflix doivent arriver à identifier une métrique de base qui reflète le comportement normal du système,
+comme le nombre de vidéos diffusées par seconde (SPS). Aussi ils doivent arriver à formuler des hypothèses sur le fait que l état stable sera maintenu malgré les perturbations introduites.
+outre cela ils doivent etre à meme de simuler des événements réels tels que des pannes de serveur ou des erreurs de réseau.
+et arriver à observer les différences de comportement entre le groupe de contrôle (sans perturbation) et le groupe expérimental (avec perturbation). 
+
+____les variables qu ils observent_____
+
+les variables observées sont le nombre de vidéos observées par sercondes qui est par la suite utilisé comme indicateur principal pour determiner si
+le système est oui ou non en bonne santé ainsi que les métriques de performances internes comme le temps de latence des requêtes et l utilisation du 
+CPU,pour detecter les problèmes au niveaux des services individuels
+
+_____les resultats obtenus_______
+
+les expériences observées permettre d identifier les différentes faiblesse du système et de degager des suggestions pour son amélioration.Aussi,
+ils permettent d obtenir l assurance que le système fonctionne correctement malgré les différentes défaillances qui ont été simulées et qu ils arrive par 
+la meme occasion à maintenir une performances acceptable malgré ces dernières 
+
+___Netflix est elle la seule à utiliser cette technique_____
+
+Non netflix n est pas la seule entreprise à adopter l ingénieurie du Chaos nous pouvons citer Amazon,Google, Microsoft et Facebook utilisent également des 
+techniques similaires pour tester la résilience de leurs systèmes.
+
+ces expériences pourraient etre utiliser dans les entreprises de commerces electronique afinde simuler les différentes pannes qui pourraient survenir dans les systèmes de paiement
+
+
+4. The main advantage of having a formal specification for WASM is that it drastically simplifies its semantics. For example, the JVM (Java Virtual Machine) bytecode verification is about 150 pages whereas WASM's fits in one. So the verification is quicker and more functional. For example JVM, CIL and Android Dalvik verification allow irreducible loops while WASM does not.
+However, it does not mean that WASM implementations should not be tested. Indeed, a formal specification does not keep any of its implementations to be bug-free.
