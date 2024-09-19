@@ -1,6 +1,4 @@
-# CHAUVEL Tom, JOSSO Célia
-# ESIR2 Informatique, SI
-# VV : Practical Session 1 
+# CHAUVEL Tom & JOSSO Célia, ESIR2 Informatique SI, VV : Practical Session 1 
 
 # 1. Article reporting the discovery of a software bug
 
@@ -79,7 +77,7 @@ Here all some concrete experiments Netflix performs by using Chaos Engineering :
 ## 3.2. Requirements for these experiments
 
 To practice a Chaos Engineering, here are some of the requirements :
-- **Make an hypothesis -> dire à quoi **
+- **Make an hypothesis -> dire à quoi**
 - Determine the region of the test
 - Have a services based system like AWS in order to test each services efficiently
 
@@ -92,20 +90,20 @@ The observed variables are :
 
 ## 3.4. What are the main results they obtained
 
-**IDK**
+These experiments helped improve system resilience and fault tolerance. Netflix found weaknesses and reinforced its infrastructure by simulating failures and their metrics permit to understand their users' behavior, so that make them confident in handling real-world failures more effectively.
 
 ## 3.5. Is Netflix the only company performing these experiments? 
 
 Based on this tool (https://litmuschaos.io/), we learnt that chaos engeneering is used for exemple by Orange, RedHat (IBM), VMWare (BroadCom), or Kubesphere which are companies or tools that are used/using big scale infrastructures. 
 
-## 3.6. Speculate how these experiments could be carried in other organizations in terms of the kind of experiment that could be performed and the system variables to observe during the experiments. => faudrait réduire ce titre
+## 3.6. Adapting Experiments to Other Organizations: Types and Key Variables
+
+When adapting chaos engineering experiments to other organizations, the process could be :
 
 1. Build a hypothesis around steady state behavior
 2. Vary real­world events
 3. Run experiments in production 
 4. Automate experiments to run continuously
-
-**=> je sais pas s'ils attendent ça ou autre chose**
 
 # 4. WebAssembly Formal Specification
 
@@ -127,7 +125,7 @@ They have identified issues and have helped in fixing a bunch of those.
 
 ## What other artifacts were derived from this mechanized specification?
 
-From this, they have provide a verified executable interpreter and type checker.
+From this, they have provided a verified executable interpreter and type checker.
 
 ## How did the author verify the specification?
 
