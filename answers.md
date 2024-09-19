@@ -6,7 +6,7 @@ We have chosen to find an article about the Crowdstrike bug. Here is the [link](
 
 ## 1.1. Description of the bug
 
-Crowdstrike company is one of the leader to help companies to prevent security breaches. This bug was due to an update that installed a software onto the core Windows operating system on the 19th of July 2024.
+Crowdstrike company is one of the leader to help companies to prevent security breaches. This bug was due to an update being pushed without any verication on every Windows operating system where Crowdstrike was installed on the 19th of July 2024. As Crowdstrike has access to the kernel, the damages were critical.
 
 ## 1.2. Manifested failures
 
@@ -18,21 +18,21 @@ The impacted systems were stuck in a boot loop with an error message that says, 
 
 Crowdstrike has around 29,000 customers, with more than 500 on the list of the Fortune 1000. So a lot of companies were impacted, it means some of the biggest airlines, TV braodcasters and other essential companies.
 
-Furthermore, 8.5 millions of Windows based machines were impacted. 
+Globally, 8.5 millions of Windows based machines were impacted. 
 
 ### 1.3.2. For the company
 
-The company lost in credibility because it decided to make an update on a friday (worst day of the week because it is just before the weekend), just before an important holidays departure and the begginning of the Olympic Games. 
+The company lost its credibility because it decided to make an update firstly on a friday : the worst day of the week as it is just before the weekend, right before an important holidays departure and also before the begginning of the Olympic Games. 
 
-Crowdstrike's finances have decreased by 68 percents. (Source [here](https://www.google.com/finance/quote/CRWD:NASDAQ?sa=X&ved=2ahUKEwjIz6Sxv7-IAxX1TaQEHSvZKK4Q3ecFegQIRBAf&window=6M))
+For that, Crowdstrike's finances have decreased by 68 percents. (Source [here](https://www.google.com/finance/quote/CRWD:NASDAQ?sa=X&ved=2ahUKEwjIz6Sxv7-IAxX1TaQEHSvZKK4Q3ecFegQIRBAf&window=6M))
 
 ## 1.4. Local or global bug ?
 
-This is a global bug because it completely impacted a lot of systems all around the world during one hour.
+This is a global bug because it impacted a lot of systems all around the world for at least one hour in the best scenario. Also, other company weren't directly impacted by that, but as some suppliers were, they were too.
 
 ## 1.5. Is testing would have helped ?
 
-**JE SAIS PAS S'IL ONT TESTE OU PAS DU COUP CA DEPEND S'ILS L'ONT FAIT OU NON**
+According to this (document)[https://www.lemondeinformatique.fr/actualites/lire-une-entree-de-trop-a-l-origine-du-bug-de-crowdstrike-94462.html], tests weren't made as the program tried to access to a 21th value in a set of 20. And it seems pretty logical that testing would have help to spot this ridiculous bug.
 
 # 2. Apache Commons projects tracking systems
 
@@ -51,7 +51,7 @@ However, if we add an element in the _A_ list, the _B_ list is also modified. It
 
 ## 2.3. Local or global 
 
-This is an example of a global bug since it can impact a lot of developers. Furthermore, as no test was provided to validate the analysis, a modification could lead to development issues.
+This is an example of a global bug since it can impact a lot of developers. Furthermore, as no test was provided to clearify the behaviour of the function, a code modification could lead to confusion and potentially break a lot of programs.
 
 ## 2.4. Provided solution
 
@@ -94,7 +94,7 @@ These experiments helped improve system resilience and fault tolerance. Netflix 
 
 ## 3.5. Is Netflix the only company performing these experiments? 
 
-Based on this tool (https://litmuschaos.io/), we learnt that chaos engeneering is used for exemple by Orange, RedHat (IBM), VMWare (BroadCom), or Kubesphere which are companies or tools that are used/using big scale infrastructures. 
+Based on this tool (https://litmuschaos.io/), we learnt that chaos engeneering is used for exemple by Orange, RedHat (IBM), VMWare (BroadCom), or Kubesphere which are companies or tools that are using big scale infrastructures. 
 
 ## 3.6. Adapting Experiments to Other Organizations: Types and Key Variables
 
@@ -109,9 +109,9 @@ When adapting chaos engineering experiments to other organizations, the process 
 
 ## 4.1. Should WebAssembly implementations not be tested?
 
-A formal specification is useful in order to get the same behaviour on different operating systems, architectures and web browsers. It is also useful for each language in order to follow the specific guidelines.
+A formal specification is useful in order to get the same behaviour on different operating systems, architectures and web browsers. It is also useful for each language in order to follow the same specific guidelines.
 
-So the implementation has to be tested, otherwise the program won't run exactly the same. Moreover, WASM isn't meant to be platform-specific, so testing is necessary in order to get the same output.
+So the implementation has to be tested, otherwise the program won't run exactly the same. Moreover, WASM isn't meant to be platform-specific, so testing is necessary in order to get the same output on each platform.
 
 # 5. Mechanized specification of the language using Isabelle
 
@@ -133,4 +133,4 @@ The author properly formulated lemmas as no one was created before.
 
 ## Does this new specification removes the need for testing?
 
-No, this is just proving the specification, not testing the implementation. And also, as Isabelle is not bug-free, we can't be 100% sure and tests are complementary. 
+No, this is just proving the specification, not testing the implementation. And also, as Isabelle is not bug-free, we can't be 100% sure that there is no issue in the theory. 
