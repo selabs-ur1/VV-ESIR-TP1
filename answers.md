@@ -77,7 +77,7 @@ Here all some concrete experiments Netflix performs by using Chaos Engineering :
 ## 3.2. Requirements for these experiments
 
 To practice a Chaos Engineering, here are some of the requirements :
-- **Make an hypothesis -> dire à quoi**
+- Make a hypothesis (it means define how the system should behave under the given failure conditions).
 - Determine the region of the test
 - Have a services based system like AWS in order to test each services efficiently
 
