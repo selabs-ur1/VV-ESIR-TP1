@@ -96,6 +96,7 @@ Netflix est-elle la seule entreprise à réaliser ces expérimentations ?
         -Expériences possibles : Simuler des pannes de machines virtuelles, des interruptions de réseau ou des défaillances de stockage.
         -Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge.
 
+<<<<<<< HEAD
 
 4. Les avantages d’avoir une spécification formelle pour WebAssembly sont : 
     → La rapidité d’exécution
@@ -121,3 +122,5 @@ Les implémentations de WebAssembly devraient être testées, même si elles son
     → le code provient de sources non fiables,
     → des erreurs d’implémentation peuvent survenir
     → WebAssembly doit pouvoir être utilisé en combinaison avec d’autres langages comme C++ et Rust. Il faut vérifier que ces interactions se déroulent correctement.
+=======
+>>>>>>> 5dfa8e09e6ca661b3b4b4823f30ee63c079127da
