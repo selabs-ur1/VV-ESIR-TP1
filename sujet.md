@@ -45,3 +45,6 @@ The solution was to create a helper to test the value of all the map's keys indi
     No Netflix is ​​not the only company to adopt Chaos engineering we can cite Amazon, Google, Microsoft and Facebook also use similar techniques to test the resilience of their systems.
 
     These experiments could be used in e-commerce companies to simulate the different failures that could occur in payment systems.
+
+4. The main advantage of having a formal specification for WASM is that it drastically simplifies its semantics. For example, the JVM (Java Virtual Machine) bytecode verification is about 150 pages (?????) whereas WASM's fits in one. So the verification is quicker and more functional. For example JVM, CIL and Android Dalvik verification allow irreducible loops while WASM does not.
+However, it does not mean that WASM implementations should not be tested. Indeed, a formal specification does not keep any of its implementations to be bug-free.
