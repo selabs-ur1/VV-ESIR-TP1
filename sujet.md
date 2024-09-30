@@ -22,3 +22,26 @@ In our opinion, testing the right scenario could have definitely helped to disco
 We categorize this bug as local because the `toString` function is used correctly with correct input, and the same goes for `assertEqual`. Here, it’s a lack of caution regarding the behavior of the `MultiValuedMap.toString()`. 
 The solution was to create a helper to test the value of all the map's keys individually, so as not to have to use `MultiValuedMap.toString()`.
 
+3. Concrete experiments carried out by Netflix include: *the use of the internal Chaos Monkey service which is a tool that randomly terminates virtual machine instances in the production system in order to test the service's ability to handle individual instance failures.
+
+    *the use of chaos kong Chaos kong simulates the failure of an entire Amazon EC2 region to assess the system's resilience to large-scale failures.
+
+    *the introduction of errors in communications between Netflix services to verify that the system continues to operate even if requests fail.
+
+                the requirements for these experiments__
+
+    the requirements for these experiments are first of all to be able to define a Steady State this means that Netflix engineers must be able to identify a basic metric that reflects the normal behavior of the system, such as the number of videos streamed per second (SPS). They must also be able to formulate hypotheses on the fact that the stable state will be maintained despite the disturbances introduced. In addition, they must be able to simulate real events such as server failures or network errors and be able to observe the differences in behavior between the control group (without disturbance) and the experimental group (with disturbance).
+
+                        the variables they observe_
+
+    the observed variables are the number of videos observed per second which is then used as the main indicator to determine whether or not the system is healthy as well as internal performance metrics such as query latency and CPU usage, to detect problems at the individual service levels
+
+                        the results obtained__
+
+    the observed experiments make it possible to identify the various weaknesses of the system and to make suggestions for its improvement. Also, they make it possible to obtain assurance that the system is functioning correctly despite the various failures that have been simulated and that it manages at the same time to maintain acceptable performance despite these failures
+
+            Is Netflix the only one to use this technique__
+
+    No Netflix is ​​not the only company to adopt Chaos engineering we can cite Amazon, Google, Microsoft and Facebook also use similar techniques to test the resilience of their systems.
+
+    These experiments could be used in e-commerce companies to simulate the different failures that could occur in payment systems.
