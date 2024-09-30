@@ -96,3 +96,28 @@ Netflix est-elle la seule entreprise à réaliser ces expérimentations ?
         -Expériences possibles : Simuler des pannes de machines virtuelles, des interruptions de réseau ou des défaillances de stockage.
         -Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge.
 
+
+4. Les avantages d’avoir une spécification formelle pour WebAssembly sont : 
+    → La rapidité d’exécution
+    → Exécution sécurisée
+    → Interopérabilité simple avec la plate-forme Web
+    → Compact et facile à décoder
+    → Facile à valider et compiler
+    → Facile à générer pour les producteurs
+
+**Code de bas niveau rapide**
+Il est généré par un compilateur C/C++ et est généralement optimisé avant l’exécution.
+
+**Portabilité**
+Le Web s’étend sur de nombreuses classes d’appareils. Le code destiné au Web doit être indépendant du matériel pour garantir que les applications fonctionnent sur tous les types de navigateurs avec le même comportement.
+
+**Code compact**
+Le code transmis via le réseau doit être aussi compact que possible pour réduire les temps de chargement
+
+**Sécurité**
+La sécurité est indispensable sur le Web car le code provient de sources non fiables.
+
+Les implémentations de WebAssembly devraient être testées, même si elles sont basées sur une spécification formelle. Voici quelques raisons pour lesquelles le test est nécessaire :
+    → le code provient de sources non fiables,
+    → des erreurs d’implémentation peuvent survenir
+    → WebAssembly doit pouvoir être utilisé en combinaison avec d’autres langages comme C++ et Rust. Il faut vérifier que ces interactions se déroulent correctement.
