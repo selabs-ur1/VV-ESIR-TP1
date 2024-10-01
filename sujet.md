@@ -94,5 +94,5 @@ Netflix est-elle la seule entreprise à réaliser ces expérimentations ?
         -Variables à observer : Performance des sites web, temps de réponse lors des pics de trafic, et intégrité des transactions.
     *Fournisseurs de cloud :
         -Expériences possibles : Simuler des pannes de machines virtuelles, des interruptions de réseau ou des défaillances de stockage.
-        -Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge.
+        -Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge
 
