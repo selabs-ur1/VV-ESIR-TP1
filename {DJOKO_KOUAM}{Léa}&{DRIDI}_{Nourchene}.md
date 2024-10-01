@@ -123,3 +123,27 @@ Les implémentations de WebAssembly devraient être testées, même si elles son
     → des erreurs d’implémentation peuvent survenir
     → WebAssembly doit pouvoir être utilisé en combinaison avec d’autres langages comme C++ et Rust. Il faut vérifier que ces interactions se déroulent correctement.
 
+
+
+
+5. Les principaux avantages de la spécification mécanisée :
+   - Beaucoup de précision et de rigueur dans la formalisation
+   - Beaucoup de vérification aussi (un interpréteur exécutable vérifié et un vérificateur de types)
+   - Solidité du système de types
+
+
+   → Cette spécification mécanisée a aidé à améliorer la spécification formelle originale du langage
+   → a permis de corriger des problèmes et ambiguïtés dans la formalisation initiale 
+
+
+    **Artefacts dérivés**
+    -Interpréteur exécutable vérifié
+    -Vérificateur de types
+    -Preuve formelle de solidité du système de types
+
+
+   ---- L'auteur a vérifié la spécification en utilisant Isabelle, un puissant prouveur de théorèmes, pour assurer la correction de la formalisation et des artefacts dérivés.-----
+
+
+    **Cette nouvelle spécification supprime-t-elle le besoin de tests ?**
+    → Non, même si la spécification mécanisée réduit le besoin de tests traditionnels grâce à des preuves formelles, les tests restent nécessaires pour valider les implémentations pratiques dans des scénarios réels et gérer les cas limites.
